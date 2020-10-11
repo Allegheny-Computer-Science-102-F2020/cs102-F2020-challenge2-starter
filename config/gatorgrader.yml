@@ -1,0 +1,84 @@
+---
+name: cs102-F2020-challenge2
+break: true
+indent: 4
+---
+
+# Learn more about GatorGrader and its supported checks by visiting this web site:
+# https://github.com/GatorEducator/gatorgrader
+
+# Explanation:
+# --> a check without an "--exact" runs a count for an entity as an "at least"
+# --> checks below a file in a specified directory are for that specific file and directory
+# --> checks that appear stand-alone are for an entire Git repository
+
+# --> check the Python program
+iterator/iterator/__main__.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    CountMultipleLineComments --language Python --count 2
+    CountSingleLineComments --language Python --count 4
+
+# --> check the Python program
+iterator/iterator/iterate.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "from typing import List" --count 1 --exact
+    MatchFileFragment --fragment "from typing import Tuple" --count 1 --exact
+    CountMultipleLineComments --language Python --count 2
+
+# --> check the Python program
+iterator/iterator/display.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    CountMultipleLineComments --language Python --count 2
+    CountMultipleLineComments --language Python --count 3
+
+# --> check the Python program
+iterator/tests/test_iterate.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    CountMultipleLineComments --language Python --count 5
+
+# --> check the technical writing for various characteristics
+writing/reflection.md:
+    ConfirmFileExists
+    CountFileWords --count 500
+    CountMarkdownTags --tag "heading" --count 8 --exact
+    CountMarkdownTags --tag "code" --count 1
+    CountMarkdownTags --tag "code_block" --count 3
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 5
+
+# --> check that the program executes correctly and produces exactly 6 lines of output
+ExecuteCommand --command "cd iterator; poetry install; poetry run python iterator --forloop --whileloop --minimum 2 --maximum 9; cd .."
+
+# Output of the Python Program:
+
+# $ poetry run python iterator --forloop --whileloop --minimum 0 --maximum 5
+
+# Calculating the powers of 2 from 0 to 5 with iteration:
+
+  # Should I use a for loop? Yes
+  # Should I use a while loop? Yes
+
+  # Here is the output with the for loop.
+
+   # 2**0 = 1
+   # 2**1 = 2
+   # 2**2 = 4
+   # 2**3 = 8
+   # 2**4 = 16
+
+  # Here is the output with the while loop.
+
+   # 2**0 = 1
+   # 2**1 = 2
+   # 2**2 = 4
+   # 2**3 = 8
+   # 2**4 = 16
+
+# Wow, all of that iteration was exhausting! 😂
